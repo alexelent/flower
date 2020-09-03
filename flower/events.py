@@ -43,6 +43,7 @@ class EventsState(State):
         event_type = event['type']
         if event_type.startswith('task-'):
             logger.error('************')
+            logger.error('self.tasks: {}'.format(self.tasks))
             task = State.Task(uuid=event.get('uuid'))
             logger.error('event is: {}'.format(event))
             logger.error('State is: {}'.format(State))
