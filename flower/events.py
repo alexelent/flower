@@ -39,12 +39,14 @@ class EventsState(State):
         self.metrics = PrometheusMetrics()
 
     def event(self, event):
-        logger.error('************')
-        logger.error('event is: {}'.format(event))
-        logger.error('State is: {}'.format(dir(State)))
-        logger.error('Task is: {}'.format(State.get_or_create_task(event.get('uuid'))))
         worker_name = event['hostname']
         event_type = event['type']
+        if event_type.startswith('task-'):
+            logger.error('************')
+            logger.error('event is: {}'.format(event))
+            logger.error('State is: {}'.format(dir(State)))
+            logger.error('Task is: {}'.format(State.get_or_create_task(uuid=event.get('uuid'))))
+
 
         self.counter[worker_name][event_type] += 1
 
