@@ -41,8 +41,7 @@ class EventsState(State):
     def event(self, event):
         logger.error('************')
         logger.error(event)
-        print('************')
-        print(event)
+        logger.error(State)
         worker_name = event['hostname']
         event_type = event['type']
 
