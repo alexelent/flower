@@ -48,7 +48,7 @@ class EventsState(State):
             logger.error('State is: {}'.format(State))
             #logger.error('Task is: {}'.format(dir(State.get_or_create_task(self, uuid=event.get('uuid')))))
             logger.error('Task is: {}'.format(dir(State.Task(uuid=event.get('uuid')))))
-            logger.error('Routing Key is: {}'.format(task.routing_key()))
+            logger.error('Routing Key is: {}'.format(task.get('routing_key')))
 
 
         self.counter[worker_name][event_type] += 1
