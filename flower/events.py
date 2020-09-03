@@ -45,7 +45,8 @@ class EventsState(State):
             logger.error('************')
             logger.error('event is: {}'.format(event))
             logger.error('State is: {}'.format(dir(State)))
-            logger.error('Task is: {}'.format(dir(State.get_or_create_task(self, uuid=event.get('uuid')))))
+            #logger.error('Task is: {}'.format(dir(State.get_or_create_task(self, uuid=event.get('uuid')))))
+            logger.error('Task is: {}'.format(dir(State.Task(uuid=event.get('uuid')))))
 
 
         self.counter[worker_name][event_type] += 1
