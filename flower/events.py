@@ -42,6 +42,7 @@ class EventsState(State):
         logger.error('************')
         logger.error('event is: {}'.format(event))
         logger.error('State is: {}'.format(dir(State)))
+        logger.error('Task is: {}'.format(State.get_or_create_task(event.get('uuid'))))
         worker_name = event['hostname']
         event_type = event['type']
 
