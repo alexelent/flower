@@ -46,12 +46,14 @@ class EventsState(State):
             task = State.Task(uuid=event.get('uuid'))
             logger.error('event is: {}'.format(event))
             logger.error('State is: {}'.format(dir(State)))
+            logger.error('State2 is: {}'.format(State.event))
+            logger.error('State3 is: {}'.format(State.get('event')))
             #logger.error('Task is: {}'.format(dir(State.get_or_create_task(self, uuid=event.get('uuid')))))
             logger.error('Task is: {}'.format(dir(State.Task(uuid=event.get('uuid')))))
             logger.error('Routing Key is: {}'.format(task.routing_key))
             logger.error('Exchange is: {}'.format(task.exchange))
-            tasks = State.tasks.get(event['uuid'])
-            logger.error('tasks are : {}'.format(tasks))
+            #tasks = State.tasks.get(event['uuid'])
+            #logger.error('tasks are : {}'.format(tasks))
 
 
         self.counter[worker_name][event_type] += 1
