@@ -43,7 +43,6 @@ class EventsState(State):
         event_type = event['type']
         if event_type.startswith('task-'):
             logger.error('************')
-            logger.error('self.state: {}'.format(self.state))
             task = State.Task(uuid=event.get('uuid'))
             logger.error('event is: {}'.format(event))
             logger.error('State is: {}'.format(State))
@@ -51,6 +50,8 @@ class EventsState(State):
             logger.error('Task is: {}'.format(dir(State.Task(uuid=event.get('uuid')))))
             logger.error('Routing Key is: {}'.format(task.routing_key))
             logger.error('Exchange is: {}'.format(task.exchange))
+            tasks = State.tasks.get(event['uuid'])
+            logger.error('tasks are : {}'.format(tasks))
 
 
         self.counter[worker_name][event_type] += 1
